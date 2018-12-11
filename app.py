@@ -83,6 +83,25 @@ def welcome():
         render_template("index.html")
     )
 
+
+#=====================
+#Route to stats page
+#=====================
+@app.route("/stats")
+def stats():
+    return (
+        render_template("stats.html")
+    )
+
+#======================
+#Route to API Documentation Page
+#======================
+@app.route("/apiV1.0")
+def api():
+    return (
+        render_template("api.html")
+    )
+
 #======================
 #Get route select team and get a table of all games/bowl appearances, opponent, game outcome
 #======================
