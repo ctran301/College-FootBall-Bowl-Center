@@ -55,13 +55,42 @@
             </div> <!--End Navbar row-->
 
             <div class="row"> <!--Tabbed panels row-->
-                <h1>Bootstrap Tabbed pannels.</h1><br/>
-                <p> One panel for each API function. Ex... one tab for player stat look up, another returns all games and outomes, etc.</p><br/>
-                <p>If this becomes too difficult we can just use individual divs for each API function.</p>
+              <div class="col-xs-12 col-md-4"> <!--Start All Bowls Games col-->
+                <h3 class="text-center">Bowl Games and Teams</h3>
+                <p>
+                  Click the "Get Data" button to see a list of all NCAA College Football bowl games from 2007 through 2016<br/>
+                  and a list of all teams that played.
+                </p>
+                <button class="button" onclick="">Get Data</button>
+              </div><!--End All Bowl Games col-->
+
+              <div class="col-xs-12 col-md-4"> <!--Start Game Outcomes col-->
+                <h3 class="text-center">Bowl Game Outcomes</h3>
+                <p>Enter a year in the field below and click the "Get Data" button to see the bowl game outcomes for that year.</p>
+                
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter year...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Get Data</button>
+                    </span>
+                  </div><!-- /input-group -->
+              </div> <!--End Game Outcomes col-->
+
+              <div class="col-xs-12 col-md-4"> <!--Start Player Roster col-->
+                <h3>Bowl Game Rosters</h3>
+                <p>Enter a year and select a bowl game to see a roster of all playters who played in the game.</p>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">Year</span>
+                    <input type="text" class="form-control" placeholder="Enter year..." aria-describedby="basic-addon1">
+                  </div>
+              </div> <!--Start Player Roster col-->
+
             </div> <!--End Tabbed panels row-->
                 <!--Tabbed panels ref https://getbootstrap.com/docs/3.3/javascript/#tabs-usage-->
             
-            <div class="row text-center"> <!--Footer row--><br/><br/>STICKY FOOTER</div> <!--End Footer row-->
+            <div class="row text-center"> <!--Start footer row-->              
+              <div class="footer navbar-fixed-bottom">Slack-Lackers (c) | UCF Data Boot Camp</div>                         
+            </div><!--End footer row-->
 
         </div><!--End main container-->
 

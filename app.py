@@ -129,12 +129,17 @@ def history():
 #=====================
 @app.route("/apiV1.0/<bowl>/<year>")
 def players(bowl,year):
+    roster = {}
+
+    #roster query
 
     return (
         "Bowl team roster (by year):"+
         "User selects a bowl game and a year from drop downs."+
         "Returns a player roster who played in a specific bowl game and specific year."
-    )
+
+        # render_template("player_roster.html", roster = roster)
+        )
 
 if __name__ == '__main__':
     app.run(debug=True)
