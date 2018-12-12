@@ -89,8 +89,9 @@ def welcome():
 #=====================
 @app.route("/stats")
 def stats():
+    teams=["Team 1", "Team 2", "Team 3", "Team 4"]
     return (
-        render_template("stats.html")
+        render_template("stats.html", teams=teams)
     )
 
 #======================
