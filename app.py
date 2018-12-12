@@ -120,13 +120,10 @@ def game_record(year):
 @app.route("/apiV1.0/history")
 def history():
 
-    return (
+    results = session.query(Bowls.bowl).all()
+    games = jsonify(results)
 
-        render_template("bowl_info.html",
-        "Bowl Game History:</br>"+
-        "Returns list of all bowl games, year, team1, team2, & winner")
-
-    )
+    return (render_template("bowl_info.html", games = games))
 
 #=====================
 #Get route returns players who played in a specific bowl game and specific year
