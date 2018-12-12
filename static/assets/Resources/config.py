@@ -1,5 +1,5 @@
 # SQL username and password. Default will be 'root'. Change as needed.
 username = "root"
-password = "Bulletmushrooms33!"
+password = "root"
 
 use_anonymous = True
