@@ -106,12 +106,12 @@ def api():
 #======================
 #Get route select team and get a table of all games/bowl appearances, opponent, game outcome
 #======================
-@app.route("/apiV1.0/<team>")
-def team_record(team):
+@app.route("/apiV1.0/outcomes/<gYear>")
+def game_record(year):
 
     return (
         "Team Game Record:</br>"+
-        "Select a team and see all bowl game appearences, opponents, game outcome."
+        "Select a year to see all bowl game outcomes for that year."
     )
 
 #=====================
@@ -121,8 +121,11 @@ def team_record(team):
 def history():
 
     return (
+
+        render_template("bowl_info.html",
         "Bowl Game History:</br>"+
-        "Returns list of all bowl games, year, team1, team2, & winner"
+        "Returns list of all bowl games, year, team1, team2, & winner")
+
     )
 
 #=====================
