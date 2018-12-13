@@ -38,36 +38,38 @@ BowlPlayers = Base.classes.flsk_bowl_players
 session = Session(engine)
 
 #========================
-#    Initialize Flask app
+# Initialize Flask app
 #========================
 app = Flask(__name__)
 
 
 #=========================
-#                Functions
+# global varriables
 #=========================
-#global varriables
-teams = {}
-bowls = {}
-years = {} #2007-2016
+years = []
+bowls = []
 
 
 #=========================
 #Create Dropdown arrays
 #=========================
-#Teams dropdown menu
-def teamsMenu():
-    
-    return(
+#Years dropdown menu
+def yearsMenu():
 
-    )
+    with engine.connect() as con:
+        rs = con.execute('SELECT year FROM years_vw')
+        for row in rs:
+            years.append(row.year)
+    return years
 
 #Bowls dropdown menu
 def bowlsMenu():
     
-    return(
-
-    )
+    with engine.connect() as con:
+        rs = con.execute('SELECT bowl FROM bowls_vw')
+        for row in rs:
+            bowls.append(row.bowl)
+    return bowls
 
 #========================
 #          Publish Routes
@@ -90,9 +92,10 @@ def welcome():
 #=====================
 @app.route("/stats")
 def stats():
-    bowls=["Rose Bowl", "Sugar Bowl", "Peach Bowl", "Orange Bowl"]
+    yearsMenu()
+    bowlsMenu()    
     return (
-        render_template("stats.html", bowls=bowls)
+        render_template("stats.html", years=years, bowls=bowls)
     )
 
 #======================
