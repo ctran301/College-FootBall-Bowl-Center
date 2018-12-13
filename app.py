@@ -105,6 +105,43 @@ def api():
     )
 
 #======================
+#Route to Extraction Documentation Page
+#======================
+@app.route("/apiV1.0/extract")
+def extract():
+    return (
+        render_template("extract.html")
+    )
+
+
+#======================
+#Route to Tranformation Documentation Page
+#======================
+@app.route("/apiV1.0/transform")
+def transform():
+    return (
+        render_template("transform.html")
+    )
+
+#======================
+#Route to Load Documentation Page
+#======================
+@app.route("/apiV1.0/load")
+def load():
+    return (
+        render_template("load.html")
+    )
+
+#======================
+#Route to Extraction Documentation Page
+#======================
+@app.route("/apiV1.0/data")
+def data():
+    return (
+        render_template("data.html")
+    )
+
+#======================
 #Get route select team and get a table of all games/bowl appearances, opponent, game outcome
 #======================
 @app.route("/apiV1.0/outcome/<year>")

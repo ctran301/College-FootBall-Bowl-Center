@@ -45,3 +45,14 @@ div{
     color: lightgray;
     padding-top: 15px;   
 }
+
+#leftNav{
+    border-right-style: solid;
+    height: 100%
+}
+
+.flex-column{
+    width: 100px;
+    border-right-style: solid;
+    height: 100%
+}
