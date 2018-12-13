@@ -65,8 +65,16 @@
                     </nav>
                 </div> <!--End Left Nav col div-->
                 <div class="col-md-10"> <!--Content-->
-                    <h2>Data Transformations</h2>
-                    <p>DATA TRANSFORMATIONS AND STEPS</p> 
+                    <h2>Transform</h2>
+                    <ul>
+                        <li>Datasets contained more columns than we needed, so we opted to only stage a subset of total data.</li>
+                        <li>Opted to filter the datasets vertically by only keeping the past 10 years’ worth of information.</li>
+                        <li>Created import table structures to store the raw acquired data.</li>
+                        <li>Removed orphan records between the two related data sets (players associated to bowl games which were not in our dataset).</li>
+                        <li>Created relational table structures eliminate redundant information and enforce referential integrity.</li>
+                        <li>Created appropriate DML statements to transition the data form the import tables to the relational structures.</li>
+                        <li>Created logical views to hide join complexity.</li>					
+                    </ul>
                 </div> <!--End Left Nav col div-->
             </div> <!--End Content panels row-->
             
