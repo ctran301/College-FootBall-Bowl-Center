@@ -68,18 +68,19 @@
                 <div class="col-md-10"> <!--Content-->
                     <h2>API Information</h2>
                     <br>
-                    <br>
                     <h3>1. Bowl History</h3>
-                    <p>Returns distinct list of all bowls played over the 10 year span including at set of aggregate columns
+                    <br>
+                    <p><strong>Description:</strong> Returns distinct list of all bowls played over the 10 year span including at set of aggregate columns</p>
+                    <p><strong>Input Parameters:</strong> None</p>   
+                    <p><strong>Output Overview:</strong> JSON data containing the following attributes
                         <li>Count Games:  Amount of time the specific bowl was played over the time window</li>
                         <li>Min Year:  First year, in the 10 year span, in which the bowl was played</li>
                         <li>Max Year:  Last year, in the 10 year span, in which the bowl was played</li>
                         <li>Home Teams:  Delimited distinct list of all home teams over the time window</li>
                         <li>Away Teams:  Delimited distinct list of all away teams over the time window</li>
                     </p> 
+                    <p><strong>Sample Data:</strong></p>   
                     <br>
-                    <br>
-                    <container>
                     <table>                        
                         <tr>
                             <th>Bowl</th>
@@ -89,7 +90,6 @@
                             <th>Home Teams</th>
                             <th>Away Teams</th>
                         </tr>
-    
                         {% for row in rsHistory %}
                             <tr>
                                 <td>{{row[0]}}</td>
@@ -101,17 +101,16 @@
                             </tr>
                         {% endfor %}
                     </table>
-                    </container>
                 </div> <!--End Left Nav col div-->
 
                 <div class="col-md-10"> <!--Content-->
                     <h3>2. Bowl Outcome</h3>
-                    <p>Returns all bowls games for a given year and outlines the particpants.
-                    <p>API has one required parameters:</p>  
-                        <li>Year:  any value betwen 2007 and 2016</li>
                     <br>
-                    <br>                        
-                    <p>API return the following attributes:</p>  
+                    <p><strong>Description:</strong> Returns all bowls games for a given year and outlines the particpants</p>
+                    <p><strong>Input Parameters:</strong>
+                        <li>Year:  any value betwen 2007 and 2016</li>
+                    </p>   
+                    <p><strong>Output Overview:</strong> JSON data containing the following attributes
                         <li>Bowl</li>
                         <li>Home Team</li>
                         <li>Away Team</li>
@@ -119,10 +118,9 @@
                         <li>Away Score</li>
                         <li>Winning Team</li>
                         <li>Loosing Team</li>
+                    </p> 
+                    <p><strong>Sample Data:</strong></p>   
                     <br>
-                    <br>
-                    <br>
-                    <container>
                     <table>                        
                         <tr>
                             <th>Bowl</th>
@@ -133,7 +131,6 @@
                             <th>Winning Team</th>
                             <th>Loosing Team</th>                            
                         </tr>
-    
                         {% for row in rsOutcome %}
                             <tr>
                                 <td>{{row[0]}}</td>
@@ -146,7 +143,6 @@
                             </tr>
                         {% endfor %}
                     </table>
-                    </container>
                 </div> <!--End Left Nav col div-->
 
 
@@ -154,24 +150,23 @@
                     <br>
                     <br>
                     <h3>3. Bowl Roster</h3>
-                    <p>Returns listing of all players who played in specific bowl game.</p>
-                    <p>API has two required parameters:</p>  
+                    <br>
+                    <p><strong>Description:</strong> Returns listing of all players who played in specific bowl game</p>
+                    <p><strong>Input Parameters:</strong>
                         <li>Year:  2017 in sample below</li>
                         <li>Bowl:  Rose Bowl for sample below</li>
-                    <br>
-                    <br>                        
-                    <p>API return the following attributes:</p>  
+                    </p>   
+                    <p><strong>Output Overview:</strong> JSON data containing the following attributes
                         <li>Team</li>
                         <li>Player</li>
+                    </p> 
+                    <p><strong>Sample Data:</strong></p>   
                     <br>
-                    <br>
-                    <container>
                     <table>                        
                         <tr>
                             <th>Team</th>
                             <th>Player</th>
-                        </tr>
-    
+                        </tr>    
                         {% for row in rsRoster %}
                             <tr>
                                 <td>{{row[0]}}</td>
