@@ -38,38 +38,36 @@ BowlPlayers = Base.classes.flsk_bowl_players
 session = Session(engine)
 
 #========================
-# Initialize Flask app
+#    Initialize Flask app
 #========================
 app = Flask(__name__)
 
 
 #=========================
-# global varriables
+#                Functions
 #=========================
-years = []
-bowls = []
+#global varriables
+teams = {}
+bowls = {}
+years = {} #2007-2016
 
 
 #=========================
 #Create Dropdown arrays
 #=========================
-#Years dropdown menu
-def yearsMenu():
+#Teams dropdown menu
+def teamsMenu():
+    
+    return(
 
-    with engine.connect() as con:
-        rs = con.execute('SELECT year FROM years_vw')
-        for row in rs:
-            years.append(row.year)
-    return years
+    )
 
 #Bowls dropdown menu
 def bowlsMenu():
     
-    with engine.connect() as con:
-        rs = con.execute('SELECT bowl FROM bowls_vw')
-        for row in rs:
-            bowls.append(row.bowl)
-    return bowls
+    return(
+
+    )
 
 #========================
 #          Publish Routes
@@ -92,10 +90,9 @@ def welcome():
 #=====================
 @app.route("/stats")
 def stats():
-    yearsMenu()
-    bowlsMenu()    
+    bowls=["Rose Bowl", "Sugar Bowl", "Peach Bowl", "Orange Bowl"]
     return (
-        render_template("stats.html", years=years, bowls=bowls)
+        render_template("stats.html", bowls=bowls)
     )
 
 #======================
@@ -193,7 +190,10 @@ def players(bowl,year):
                 .order_by(BowlPlayers.team, BowlPlayers.player)
                 .all())
     
-    return jsonify(results) 
+    if (len(results) > 0):
+        return jsonify(results) 
+    else:
+        return "There is no " + bowl + " data for " + year + "."
 
 if __name__ == '__main__':
     app.run(debug=True)
