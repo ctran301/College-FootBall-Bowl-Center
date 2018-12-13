@@ -90,9 +90,9 @@ def welcome():
 #=====================
 @app.route("/stats")
 def stats():
-    teams=["Team 1", "Team 2", "Team 3", "Team 4"]
+    bowls=["Rose Bowl", "Sugar Bowl", "Peach Bowl", "Orange Bowl"]
     return (
-        render_template("stats.html", teams=teams)
+        render_template("stats.html", bowls=bowls)
     )
 
 #======================
@@ -143,7 +143,7 @@ def history():
 #=====================
 #Get route returns players who played in a specific bowl game and specific year
 #=====================
-@app.route("/apiV1.0/player_roster/<bowl>/<year>")
+@app.route("/apiV1.0/roster/<bowl>/<year>")
 def players(bowl,year):
 
     results = (session.query(BowlPlayers.team, 
