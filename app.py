@@ -107,7 +107,7 @@ def api():
 #======================
 #Get route select team and get a table of all games/bowl appearances, opponent, game outcome
 #======================
-@app.route("/apiV1.0/outcomes/<year>")
+@app.route("/apiV1.0/outcome/<year>")
 def game_record(year):
 
     results = (session.query(BowlOutcome.bowl, 
@@ -143,7 +143,7 @@ def history():
 #=====================
 #Get route returns players who played in a specific bowl game and specific year
 #=====================
-@app.route("/apiV1.0/<bowl>/<year>")
+@app.route("/apiV1.0/player_roster/<bowl>/<year>")
 def players(bowl,year):
 
     results = (session.query(BowlPlayers.team, 
