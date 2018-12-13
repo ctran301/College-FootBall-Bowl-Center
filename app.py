@@ -30,8 +30,9 @@ Base = automap_base()
 Base.prepare(engine, reflect=True)
 
 # Assign table refference to a vars
-Player = Base.classes.player_stats
-Game = Base.classes.game_stats
+BowlHistory = Base.classes.flsk_bowl_history
+BowlOutcome = Base.classes.flsk_bowl_outcome
+BowlPlayers = Base.classes.flsk_bowl_players
 
 # Create Session obj
 session = Session(engine)
@@ -106,13 +107,21 @@ def api():
 #======================
 #Get route select team and get a table of all games/bowl appearances, opponent, game outcome
 #======================
-@app.route("/apiV1.0/outcomes/<gYear>")
+@app.route("/apiV1.0/outcomes/<year>")
 def game_record(year):
 
-    return (
-        "Team Game Record:</br>"+
-        "Select a year to see all bowl game outcomes for that year."
-    )
+    results = (session.query(BowlOutcome.bowl, 
+                             BowlOutcome.home_team, 
+                             BowlOutcome.away_team, 
+                             BowlOutcome.home_score, 
+                             BowlOutcome.away_score, 
+                             BowlOutcome.winning_team,
+                             BowlOutcome.loosing_team)
+                .filter(BowlOutcome.year == year)
+                .order_by(BowlOutcome.bowl)
+                .all())
+    
+    return jsonify(results) 
 
 #=====================
 #Get route returns list of all bowl games, year, team1, team2, winner
@@ -120,27 +129,31 @@ def game_record(year):
 @app.route("/apiV1.0/history")
 def history():
 
-    results = session.query(Bowls.bowl).all()
-    games = jsonify(results)
-
-    return (render_template("bowl_info.html", games = games))
+    results = (session.query(BowlHistory.bowl, 
+                             BowlHistory.cnt_games, 
+                             BowlHistory.min_year, 
+                             BowlHistory.max_year, 
+                             BowlHistory.home_teams, 
+                             BowlHistory.away_teams)
+                .order_by(BowlHistory.bowl)                             
+                .all())
+    
+    return jsonify(results) 
 
 #=====================
 #Get route returns players who played in a specific bowl game and specific year
 #=====================
 @app.route("/apiV1.0/<bowl>/<year>")
 def players(bowl,year):
-    roster = {}
 
-    #roster query
-
-    return (
-        "Bowl team roster (by year):"+
-        "User selects a bowl game and a year from drop downs."+
-        "Returns a player roster who played in a specific bowl game and specific year."
-
-        # render_template("player_roster.html", roster = roster)
-        )
+    results = (session.query(BowlPlayers.team, 
+                             BowlPlayers.player)
+                .filter(BowlPlayers.year == year)
+                .filter(BowlPlayers.bowl == bowl)                
+                .order_by(BowlPlayers.team, BowlPlayers.player)
+                .all())
+    
+    return jsonify(results) 
 
 if __name__ == '__main__':
     app.run(debug=True)
