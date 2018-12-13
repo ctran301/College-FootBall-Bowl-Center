@@ -87,16 +87,9 @@
                     </div>
                     <select class="custom-select" id="rosterYear">
                       <option selected>Select year...</option>
-                      <option value="2007">2007</option>
-                      <option value="2008">2008</option>
-                      <option value="2009">2009</option>
-                      <option value="2010">2010</option>
-                      <option value="2011">2011</option>
-                      <option value="2012">2012</option>
-                      <option value="2013">2013</option>
-                      <option value="2014">3014</option>
-                      <option value="2015">2015</option>
-                      <option value="2016">2016</option>
+                      {% for val in years %}
+                      <option value="{{val}}">{{val}}</option>
+                      {% endfor %}
                     </select>
                   </div>
                   <br/>
@@ -107,8 +100,8 @@
                       <select class="custom-select" id="rosterBowl">
                         <option selected>Select bowl...</option>
 
-                        {% for b in bowls %}
-                        <option value="{{b}}">{{b}}</option>
+                        {% for val in bowls %}
+                        <option value="{{val}}">{{val}}</option>
                         {% endfor %}
                         
                       </select>
