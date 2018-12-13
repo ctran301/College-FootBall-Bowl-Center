@@ -62,7 +62,7 @@
                   and a list of all teams that played.
                 </p>
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Get Data</button>
+                    <button class="btn btn-default" type="button" id="historyBTN">Get Data</button>
                 </span>
               </div><!--End All Bowl Games col-->
 
@@ -71,9 +71,9 @@
                 <p>Enter a year in the field below and click the "Get Data" button to see the bowl game outcomes for that year.</p>
                 
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Enter year..." id="gameYear">
+                    <input type="text" class="form-control" placeholder="Enter year..." id="outcomeYear">
                     <span class="input-group-btn">
-                      <button class="btn btn-default" type="button" id="yearBTN">Get Data</button>
+                      <button class="btn btn-default" type="button" id="outcomeBTN">Get Data</button>
                     </span>
                   </div><!-- /input-group -->
               </div> <!--End Game Outcomes col-->
@@ -83,9 +83,9 @@
                 <p>Enter a year and select a bowl game to see a roster of all playters who played in the game.</p>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <label class="input-group-text" for="bowlYear">Year</label>
+                      <label class="input-group-text" for="rosterYear">Year</label>
                     </div>
-                    <select class="custom-select" id="bowlYear">
+                    <select class="custom-select" id="rosterYear">
                       <option selected>Select year...</option>
                       <option value="2007">2007</option>
                       <option value="2008">2008</option>
@@ -102,13 +102,13 @@
                   <br/>
                   <div class="input-group mb-3">
                       <div class="input-group-prepend">
-                        <label class="input-group-text" for="bowl">Bowl Game</label>
+                        <label class="input-group-text" for="rosterBowl">Bowl Game</label>
                       </div>
-                      <select class="custom-select" id="bowl">
+                      <select class="custom-select" id="rosterBowl">
                         <option selected>Select bowl...</option>
 
-                        {% for t in teams %}
-                        <option value="{{t}}">{{t}}</option>
+                        {% for b in bowls %}
+                        <option value="{{b}}">{{b}}</option>
                         {% endfor %}
                         
                       </select>
@@ -131,18 +131,23 @@
         <!--OnClick functions-->
         <!--Roster onclick-->
         <script type='text/javascript'>
-          document.getElementById('rosterBTN').onclick = function () {
-              var bYear = document.getElementById('bowlYear');
-              var bowl = document.getElementById('bowl');
-              apiRoute = 'http://127.0.0.1:5000/apiV1.0/' + bYear.value + '/' + bowl.value;
+          document.getElementById('historyBTN').onclick = function () {
+              apiRoute = 'http://127.0.0.1:5000/apiV1.0/history'; 
               location.href = apiRoute;
           };
 
-          document.getElementById('yearBTN').onclick = function () {
-              var gYear = document.getElementById('gameYear');
+          document.getElementById('outcomeBTN').onclick = function () {
+              var gYear = document.getElementById('outcomeYear');
               apiRoute = 'http://127.0.0.1:5000/apiV1.0/outcome/' + gYear.value;
               location.href = apiRoute;
           };          
+
+          document.getElementById('rosterBTN').onclick = function () {
+              var bYear = document.getElementById('rosterYear');
+              var bowl = document.getElementById('rosterBowl');
+              apiRoute = 'http://127.0.0.1:5000/apiV1.0/roster/' + bowl.value + '/' + bYear.value; 
+              location.href = apiRoute;
+          };
         </script>
                 <!--Latest minified jquery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
