@@ -63,3 +63,7 @@ div{
 body{
     margin-bottom: 60px;
 }
+
+thead{
+    background-color: lightgray;
+}
