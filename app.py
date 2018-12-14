@@ -156,7 +156,10 @@ def game_record(year):
                 .order_by(BowlOutcome.bowl)
                 .all())
     
-    return jsonify(results) 
+    if (len(results) > 0):
+        return jsonify(results) 
+    else:
+        return "You did not select a year. Please select a year and try again." 
 
 #=====================
 #Get route returns list of all bowl games, year, team1, team2, winner
