@@ -106,16 +106,8 @@ def stats():
 #======================
 @app.route("/apiV1.0")
 def api():
-
-    vBowl = "'Sugar Bowl'"
-
-    with engine.connect() as con:
-        rsHistory = con.execute('select bowl, cnt_games, min_year, max_year, home_teams, away_teams from flsk_bowl_history limit 5')
-        rsOutcome = con.execute('select bowl, home_team, away_team, home_score, away_score, winning_team, loosing_team from flsk_bowl_outcome limit 5')
-        rsRoster = con.execute('select team, player from flsk_bowl_players where bowl = ' + vBowl + ' and year = 2016 order by bowl, team limit 5')
-
     return (
-        render_template("api.html", rsHistory=rsHistory, rsOutcome=rsOutcome, rsRoster=rsRoster)
+        render_template("api.html")
     )
 
 #======================
@@ -127,6 +119,24 @@ def extract():
         render_template("extract.html")
     )
 
+
+#======================
+#Route to Tranformation Documentation Page
+#======================
+@app.route("/apiV1.0/transform")
+def transform():
+    return (
+        render_template("transform.html")
+    )
+
+#======================
+#Route to Load Documentation Page
+#======================
+@app.route("/apiV1.0/load")
+def load():
+    return (
+        render_template("load.html")
+    )
 
 #======================
 #Route to Extraction Documentation Page

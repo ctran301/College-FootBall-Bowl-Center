@@ -43,8 +43,11 @@ div{
     padding-right: 0px;
     background-color: rgb(161, 0, 0); 
     color: lightgray;
-    padding-top: 15px;   
+    padding-top: 15px; 
+   
 }
+
+
 
 #leftNav{
     border-right-style: solid;
@@ -55,4 +58,8 @@ div{
     width: 100px;
     border-right-style: solid;
     height: 100%
+}
+
+body{
+    margin-bottom: 60px;
 }
