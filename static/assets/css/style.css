@@ -67,3 +67,7 @@ body{
 thead{
     background-color: lightgray;
 }
+
+li{
+    margin-left: 50px;
+}
