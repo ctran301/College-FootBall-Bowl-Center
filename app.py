@@ -171,7 +171,10 @@ def history():
                 .order_by(BowlHistory.bowl)                             
                 .all())
     
-    return jsonify(results) 
+    if (len(results) > 0):
+        return jsonify(results) 
+    else:
+        return "There is no data for " + year + "."
 
 #=====================
 #Get route returns players who played in a specific bowl game and specific year
