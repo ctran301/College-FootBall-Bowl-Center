@@ -69,13 +69,29 @@
               <div class="col-xs-12 col-md-4"> <!--Start Game Outcomes col-->
                 <h3 class="text-center">Bowl Game Outcomes</h3>
                 <p>Enter a year in the field below and click the "Get Data" button to see the bowl game outcomes for that year.</p>
-                
-                <div class="input-group">
+
+                <!--div class="input-group mb-3"-->
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="outcomeYear">Year</label>
+                    </div>
+                    <select class="custom-select" id="outcomeYear">
+                      <option selected>Select year...</option>
+                      {% for var in years %}
+                      <option value="{{var}}">{{var}}</option>
+                      {% endfor %}
+                    </select>
+                    <br/>
+                    <br/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="outcomeBTN">Get Data</button>
+                    </span>  
+                <!--/div>                -->
+<!--                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Enter year..." id="outcomeYear">
                     <span class="input-group-btn">
                       <button class="btn btn-default" type="button" id="outcomeBTN">Get Data</button>
                     </span>
-                  </div><!-- /input-group -->
+                  </div>-- /input-group --> 
               </div> <!--End Game Outcomes col-->
 
               <div class="col-xs-12 col-md-4"> <!--Start Player Roster col-->
