@@ -61,8 +61,9 @@ def yearsMenu():
 
     with engine.connect() as con:
         rs = con.execute('SELECT year FROM years_vw')
-        for row in rs:
-            years.append(row.year)
+        if (len(years) < 1):
+            for row in rs:
+                years.append(row.year)
     return years
 
 #Bowls dropdown menu
@@ -70,8 +71,9 @@ def bowlsMenu():
     
     with engine.connect() as con:
         rs = con.execute('SELECT bowl FROM bowls_vw')
-        for row in rs:
-            bowls.append(row.bowl)
+        if (len(bowls) <1):
+            for row in rs:
+                bowls.append(row.bowl)
     return bowls
 
 #========================
