@@ -1,4 +1,4 @@
-# Instructions for ETL project
+# Instructions to run the College Football Bowl Center
 
 Make sure the following steps are taken before the webpage can run
 
